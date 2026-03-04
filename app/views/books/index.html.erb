@@ -1,15 +1,70 @@
+ <!-- ============================================================================
+    ARQUIVO: app/views/books/index.html.erb
+    RENDERIZADA POR: BooksController#index  (GET /books)
+    LAYOUT:  app/views/layouts/application.html.erb
+
+    VARIÁVEIS DISPONÍVEIS (definidas em BooksController#index):
+      @members → array com os membros (filtrado ou completo)
+    ============================================================================  -->
+
 <h2>todo os meus livros</h2>
 
 
+<!-- ============================================================================
+    FORMULÁRIO DE BUSCA
+
+    method="get"    → dados vão na URL como query string: /books?member=valor
+                      ✅ correto para buscas! Permite bookmarkar e compartilhar.
+    method="post"   → dados vão no corpo da requisição (para criar/alterar dados)
+
+    action="/books" → para onde o formulário envia: BooksController#index 
+               versão Rails-way: action="<%= "books_path" %>" -->
+
+   <!-- Ao clicar em "Search":
+      Browser envia:  GET /books?member=o_que_foi_digitado
+      Controller lê:  params[:member]
+    ============================================================================ -->
+
 <form action="/books" method="get">
-  <label for="member">What menber are you looking for?</label>
-  <input type="text" id="member" name="member" placeholder="e.g. John Smith">
+  <!-- "for" do label deve bater com "id" do input — importante para acessibilidade! -->
+  <label for="member">What member are you looking for?</label>
+
+  <!-- name="member"  → define a chave no hash params: params[:member]
+      id="member"    → conecta com o label acima (acessibilidade)
+      placeholder    → texto de dica dentro do campo (some ao digitar) -->
+  <input type="text" id="member" name="member" value="<%= params[:member] %>" placeholder="e.g. John Smith">
+
   <input type="submit" value="Search">
 </form>
+
+<!-- ============================================================================
+    EXIBINDO OS DADOS DO CONTROLLER
+
+    @members foi definido em BooksController#index.
+    Iteramos com .each para gerar um <li> por membro. -->
+
 
 <h2>Meet our team</h2>
 <ol>
   <% @members.each do |member| %>
+    <!-- member = variável local do bloco, contém cada elemento do @members -->
     <li><%= member.capitalize %></li>
+    <!-- .capitalize → "thanh" vira "Thanh", "dimitri" vira "Dimitri" -->
   <% end %>
 </ol>
+
+<!-- HTML GERADO (sem filtro):
+    <ol>
+      <li>Thanh</li>
+      <li>Dimitri</li>
+      <li>Germain</li>
+      <li>Damien</li>
+      <li>Julien</li>
+    </ol>
+
+    Com filtro (?member=d):
+    <ol>
+      <li>Dimitri</li>
+      <li>Damien</li>
+    </ol>
+-->

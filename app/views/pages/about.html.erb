@@ -1,16 +1,47 @@
+<!-- ============================================================================
+    ARQUIVO: app/views/pages/about.html.erb
+    RENDERIZADA POR: PagesController#about  (GET /sobre)
+    LAYOUT:  app/views/layouts/application.html.erb
+
+    ============================================================================ -->
+
 <h1>Nossa primeira pagina</h1>
+
 
 <p>Now is <%= Time.now %></p>
 
+<!-- Time.now retorna o horário atual do servidor.
+    A cada refresh o valor muda — demonstra que as views são DINÂMICAS! -->
 
+<!-- ============================================================================
+    LOOP SOBRE @members
 
+    @members precisa estar definido em PagesController#about para funcionar.
+    Atualmente está comentado no controller — descomente lá primeiro!
 
+    SINTAXE ERB:-->
+      <!--<% "codigo" %>   → executa Ruby, NÃO mostra nada no HTML  (loops, ifs)-->
+      <!--<%= "expressao" %> → executa Ruby E mostra o resultado no HTML-->
+    <!--============================================================================ -->
 <h2>Meet our team</h2>
 <ol>
   <% @members.each do |member| %>
+    <!-- member = variável local do bloco, contém cada elemento do array -->
     <li><%= member.capitalize %></li>
+    <!-- .capitalize → "thanh" vira "Thanh" -->
   <% end %>
 </ol>
 
 
+<!-- ============================================================================
+    LINK COM HELPER
+
+    link_to é um helper do Rails que gera uma tag <a>: -->
+
+    <!--root_path → helper gerado por: root to: "pages#home"
+    about_path → helper gerado por: get "sobre", ..., as: :about
+
+    Vantagem: se a URL mudar no routes.rb, o link se atualiza sozinho!
+    ============================================================================ -->
 <%= link_to "home", root_path %>
+<!-- Gera: <a href="/">home</a> -->

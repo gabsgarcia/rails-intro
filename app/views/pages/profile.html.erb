@@ -1,12 +1,15 @@
+<%# ============================================================================
+    ARQUIVO: app/views/pages/profile.html.erb
+    RENDERIZADA POR: PagesController#profile  (GET /profile)
+    LAYOUT:  app/views/layouts/application.html.erb
+    ============================================================================ %>
+
 <h1>oi do profile</h1>
 
 
-<a href=""></a>
-
-# voltar para o about
-
-<%# <% books.each do |book| %>  %>
-
+<!-- <a href=""></a>  ← tag <a> vazia: href em branco não leva a lugar nenhum!
+    Use sempre link_to com um path helper, como no exemplo abaixo. -->
 
 
 <%= link_to "voltar", about_path %>
+<%# Gera: <a href="/sobre">voltar</a> %>
