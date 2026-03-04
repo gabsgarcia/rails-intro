@@ -4,15 +4,11 @@ class PagesController < ApplicationController
   end
 
   def profile
-
   end
 
   def new
-    
   end
 
   def home
-    
   end
-
 end
