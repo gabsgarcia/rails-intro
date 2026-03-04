@@ -1,0 +1,16 @@
+<h1>Nossa primeira pagina</h1>
+
+<p>Now is <%= Time.now %></p>
+
+
+
+
+<h2>Meet our team</h2>
+<ol>
+  <% @members.each do |member| %>
+    <li><%= member.capitalize %></li>
+  <% end %>
+</ol>
+
+
+<%= link_to "home", root_path %>

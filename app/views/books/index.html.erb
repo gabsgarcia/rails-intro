@@ -1,0 +1,15 @@
+<h2>todo os meus livros</h2>
+
+
+<form action="/books" method="get">
+  <label for="member">What menber are you looking for?</label>
+  <input type="text" id="member" name="member" placeholder="e.g. John Smith">
+  <input type="submit" value="Search">
+</form>
+
+<h2>Meet our team</h2>
+<ol>
+  <% @members.each do |member| %>
+    <li><%= member.capitalize %></li>
+  <% end %>
+</ol>
