@@ -27,7 +27,7 @@ class PagesController < ApplicationController
   # "Convention over configuration": se existe about.html.erb, ele é usado.
   # ---------------------------------------------------------------------------
   def about
-    @members = ["thanh", "dimitri", "germain", "damien", "julien"]
+    @members = [ "thanh", "dimitri", "germain", "damien", "julien" ]
     # ↑ variável de instância (com @) → visível na view about.html.erb
     # ↑ variável local (sem @)        → invisível na view, só existe aqui no controller
   end
